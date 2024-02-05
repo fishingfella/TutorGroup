@@ -1,5 +1,7 @@
 import time
 
+Usernames = [["Daveyboi12","DaveIsCool12"],["MarkInit","Mark1990"]]
+
 def stringValidation(value, text):
   while not value.split() or "," in value:
     print("Invalid.")
@@ -44,22 +46,21 @@ def storeText(lineNum): #Stores students who weren't selected to not lose data w
   return above, below
 
 
-loggedIn = False
-counter = 0
-while True:
-  loggedIn = True
-  while loggedIn is False:
-    attempt_username = str(input("Enter Username: "))
-    attempt_password = str(input("Enter password: "))
+auth = False
+while auth == False:
+  username = str(input("Username: "))
+  password = str(input("Password: "))
+  for i in range(len(Usernames)):
+    if username == Usernames[i][0] and password == Usernames[i][1]:
+      auth = True
+      break
+  else:
+    print("Incorrect username or password.")
+while auth == True:
+  print("\nWelcome to the student database.")
+      
+      
 
-    if attempt_password == "MrLeemanIsCool" and attempt_username == "Mr Leeman": #credentials
-      print("Welcome Mr. Leeman!")
-      loggedIn = True
-    else:
-      print("Incorrect username or password. Please try again.")
-      counter += 1
-      if counter > 3:
-        time.sleep(15) #wait timer if too many incorrect tries
 
   print("Select an option:\n1: Select a student\n2: Add a student\n3: Logout")
   option = -1
